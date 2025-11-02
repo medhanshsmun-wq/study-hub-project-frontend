@@ -5,7 +5,7 @@
     "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://study-hub-project.onrender.com/api/$1"
+      "destination": "https://study-hub-project-backend.onrender.com/api/$1"
     }
   ]
 }

@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.hostname === 'localhost'
             ? 'http://localhost:3000'
             : 'https://study-hub-project-backend.onrender.com';
-
+       
 
     fetch(`${API_BASE_URL}/api/data`)
         .then(response => {
