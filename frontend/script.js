@@ -281,19 +281,9 @@ document.addEventListener('DOMContentLoaded', () => {
             authContainer.innerHTML = `
                 <span class="display-name">Welcome, ${currentUser.displayName}</span>
                 <button id="profile-btn" class="header-action-btn profile-btn">${profileButtonContent}</button>
-                <button id="logout-btn" class="header-action-btn">Logout</button>
+                <a href="${API_BASE_URL}/api/logout" class="header-action-btn">Logout</a>
             `;
             authContainer.style.display = 'flex';
-
-            // Attach listener for the new logout button
-            document.getElementById('logout-btn')?.addEventListener('click', () => {
-                fetch(`${API_BASE_URL}/api/logout`, {
-                    method: 'GET',
-                    credentials: 'include'
-                })
-                .then(() => window.location.href = '/') // Redirect to home on successful logout
-                .catch(err => console.error('Logout failed:', err));
-            });
         }
         // Always re-attach event listener to ensure it works after re-renders.
         document.getElementById('profile-btn')?.addEventListener('click', () => buildSpecialView('profile', buildProfileView));
