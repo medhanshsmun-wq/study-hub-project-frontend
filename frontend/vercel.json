@@ -1,0 +1,11 @@
+{ 
+    
+
+  
+    "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://study-hub-project.onrender.com/api/$1"
+    }
+  ]
+}
