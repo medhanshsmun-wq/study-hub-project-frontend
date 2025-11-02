@@ -137,9 +137,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // And check for current user
     // Use the Vercel environment variable for the backend URL
     const API_BASE_URL =
-  window.location.hostname === 'localhost'
-    ? 'http://localhost:3000'
-    : 'https://study-hub-project.onrender.com';
+        window.location.hostname === 'localhost'
+            ? 'http://localhost:3000'
+            : 'https://study-hub-project-backend.onrender.com';
 
 
     fetch(`${API_BASE_URL}/api/data`)
