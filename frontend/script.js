@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
             : 'https://study-hub-project-backend.onrender.com';
        
 
-    fetch(`${API_BASE_URL}/api/data`)
+    fetch(`${API_BASE_URL}/api/data`, { credentials: 'include' })
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Network response was not ok: ${response.statusText}`);
@@ -1440,7 +1440,8 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const response = await fetch(`${API_BASE_URL}/api/profile`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 'Content-Type': 'application/json' },                    
+                    credentials: 'include',
                     body: JSON.stringify({ displayName, branch, year })
                 });
                 const result = await response.json();
@@ -1700,7 +1701,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             if (confirmed) {
                 try {
-                    const response = await fetch(`/api/chat/${chatId}`, { method: 'DELETE' });
+                    const response = await fetch(`${API_BASE_URL}/api/chat/${chatId}`, {
+                        method: 'DELETE',
+                        credentials: 'include'
+                    });
                     if (!response.ok) throw new Error('Failed to delete chat.');
 
                     chats = chats.filter(c => c._id !== chatId);
@@ -1830,6 +1834,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const response = await fetch(`${API_BASE_URL}/api/new-chat`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
+                        credentials: 'include',
                         body: JSON.stringify({ title })
                     });
                     if (!response.ok) throw new Error('Failed to create chat.');
@@ -1857,6 +1862,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const response = await fetch(`${API_BASE_URL}/api/chat/${chatId}/rename`, {
                         method: 'PUT',
                         headers: { 'Content-Type': 'application/json' },
+                        credentials: 'include',
                         body: JSON.stringify({ newTitle })
                     });
                     if (!response.ok) throw new Error('Failed to rename chat.');
@@ -1963,6 +1969,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const response = await fetch(`${API_BASE_URL}/api/chat`, {
                     method: 'POST',
+                    credentials: 'include',
                     body: formData // No 'Content-Type' header needed, browser sets it for FormData
                 });
 
